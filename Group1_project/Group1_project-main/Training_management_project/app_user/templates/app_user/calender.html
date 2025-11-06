@@ -1,0 +1,85 @@
+{% extends "general_APP/general_home.html" %}
+{% load static %}
+
+{% block title %}
+    Calendar
+    calendar
+{% endblock %}
+
+<h1> calendar </h1>
+{% block content %}
+
+<style>
+    /* Course Overview */
+    .course-overview {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap: 20px;
+    }
+  
+    .course-item {
+        background-color: #dfdfdf;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 8px;
+        margin-bottom: 15px; /* Space between course items */
+    }
+
+    .course-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .course-dates {
+        font-size: 14px;
+        color: #666; /* Subtle color for dates */
+        margin-top: 5px; /* Space between title and dates */
+    }
+    
+    .calendar-title {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 2.5em;
+    }
+      /* List View Specific Styles */
+    .list .item {
+        align-items: flex-start;
+        text-align: left;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .item {
+    background-color: #dfdfdf;
+    padding: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    box-sizing: 50px;
+  }
+</style>
+
+<div id="courses" class="list">
+<div>
+    {% for course_i in course %}
+        <div class="item">
+            <div class="title">{{ course_i.Title }}</div>
+            <div class="course-dates">
+                Date open: {{ course_i.Date_open }}<br>
+                Date close: {{ course_i.Date_close }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

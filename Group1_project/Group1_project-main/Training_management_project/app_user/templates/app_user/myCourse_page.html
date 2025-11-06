@@ -1,0 +1,28 @@
+{% extends "general_APP/general_home.html" %}
+{% load static %}
+{% block title %}
+    User course
+{% endblock %}
+<h1> Course </h1>
+{% block content %}
+<h1 class="course-title">Enrolled Course</h1>
+<div id="courses" class="course-list">
+    {% for course in userI.Enroll_in_course.all %}
+    {% if course.Is_open %}
+    <!-- Example Course 1 -->
+    <div class="course-item">
+      <a href = "{% url 'course' course.id %}"><img src="{{ course.image }}" alt="courses {{ course.id }} image" ></a>
+      <div class="course-info">
+        <h3>{{ course.Title }}</h3>
+        <p>{{ course.Info }}</p>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+<div>
+  {% include "app_user/components/history.html" %}
+</div>
+
+
+{% endblock %}

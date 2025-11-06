@@ -1,0 +1,86 @@
+{% extends "general_APP/general_home.html" %}
+{% load static %}
+{% block title %}
+    User homepage
+{% endblock %}
+
+{% block content %}
+
+<div class="course-container">
+    <h1 class="course-title">Course Overview</h1>
+
+    <div class="course-overview">
+      {% comment %} <div class="filter-section">
+        <label for="filter">All categories: </label>
+        <select id="filter">
+          <option value="all">All categories</option>
+          <option value="course1">Category 1</option>
+          <option value="course2">Category 2</option>
+        </select>
+        <label for="sort">Sort: </label>
+        <select id="sort">
+          <option value="none">Date (none)</option>
+          <option value="name">Newly updated</option>
+          <option value="name">Oldest course</option>
+        </select>
+      </div>
+      <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="courseSearch" placeholder="Search courses..." oninput="filterCourses()">
+        </div> {% endcomment %}
+    </div>
+    <br>
+    <!-- Transitional Image Section (Slider) -->
+    <div class="transitional-slider">
+      <div class="slider-container">
+          <div class="slide active">
+              <img class="img-size-1" src="{% static "general_APP/image/banner1.png" %}" alt="Image 1" class="responsive_image1">
+          </div>
+          <div class="slide">
+              <img class="img-size-2" src="{% static "general_APP/image/banner2.png" %}" alt="Image 2">
+          </div>
+          <div class="slide">
+              <img class="img-size-3" src="{% static "general_APP/image/banner3.png" %}" alt="Image 3">
+          </div>
+      </div>
+    </div>
+  
+    <!-- Navigation Dots -->
+    <div class="slider-dots">
+      <span class="dot active-dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    
+    <div class="course-header">
+
+      <!-- Grid and List course -->
+      <div class="view-toggle">
+        <i class="fas fa-th-large" onclick="setGridView()" title="Grid View"></i>
+        <i class="fas fa-list" onclick="setListView()" title="List View"></i>
+      </div>
+    </div>
+    
+    <div id="courses" class="course-grid">
+        {% for course in all_course %}
+        {% if course.Is_open %}
+        <!-- Example Course 1 -->
+        <div class="course-item">
+          <a href = "{% url 'course' course.id %}"><img src="{{ course.image }}" alt="courses {{ course.id }} image" ></a>
+          <div class="course-info">
+            <h3>{{ course.Title }}</h3>
+            <p>{{ course.Info }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% comment %} <div class="pagination" id="pagination">
+      <button class="page-btn" onclick="changePage(-1)">&#10094; Prev</button>
+      <span id="page-info">Page 1</span>
+      <button class="page-btn" onclick="changePage(1)">Next &#10095;</button>
+    </div> {% endcomment %}
+  </div>
+{% endblock %}

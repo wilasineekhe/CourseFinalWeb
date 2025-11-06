@@ -1,0 +1,405 @@
+{% extends "general_APP/general_home.html" %}
+{% load static %}
+
+{% block title %}
+    profile
+{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Main Content */
+ .wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+  
+  }
+  
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+    width: 200%;
+    gap: 20px; 
+  }
+  
+/* Profile Card */
+.profile-card {
+  background-color: #ffffff; 
+  border-radius: 15px; 
+  text-align: center;
+  padding: 25px; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 30%; 
+  height: 570px;
+  border: 2px solid #e0e0e0; 
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.profile-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.profile-card .profile-img {
+  width: 180px; 
+  height: 180px; 
+  border-radius: 50%; 
+  border: 3px solid #800000; 
+  margin-bottom: 20px;
+}
+
+.profile-card h3 {
+  font-size: 24px; 
+  color: #333333; 
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.profile-card p {
+  font-size: 16px;
+  color: #555555; 
+  margin-bottom: 15px; 
+}
+
+  /* Style for the student ID */
+.student-id {
+  font-weight: bold; 
+  color: rgb(54, 53, 53); 
+}
+
+  
+  .profile-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 15px;
+  }
+  
+  .profile-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+  
+  .profile-stats div {
+    width: 50%;
+  }
+
+  .profile-stats div {
+    width: 48%; 
+    background-color: #f8f9fa; 
+    padding: 10px;
+    margin-top: -20px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
+
+
+.profile-stats p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #800000; 
+    margin: 0;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+
+.profile-stats p:last-child {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+
+  .profile-info {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    width: 70%; 
+    height: auto; 
+    border: 2px solid #dedede; 
+}
+  
+  .profile-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    position: sticky;
+    background-color: #fff;
+    z-index: 1;
+  }
+  
+  
+  .profile-tabs a {
+    padding: 10px 20px;
+    color: #800000; 
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s; 
+}
+
+.profile-tabs a.active {
+  color: #800000; 
+  border-bottom: 2px solid #800000;
+}
+
+.profile-tabs a:hover {
+  color: #800000; 
+}
+  
+  .profile-details {
+    margin-top: 20px;
+    min-height: 100%; 
+  }
+  
+  
+.profile-details p {
+  font-size: 16px;
+  color: #444444; 
+  line-height: 1.6; 
+  padding-bottom: 35px;
+}
+
+.profile-details h4 {
+  font-size: 22px; 
+  color: #333333; 
+  margin-bottom: 15px;
+  border-left: 4px solid #800000; 
+  padding-left: 10px; 
+}
+
+.profile-details h4.registered-course,
+.profile-details h4.Achievement {
+    font-size: 22px; 
+    color: #222523; 
+    font-weight: bold;
+}
+
+.profile-details h4.edit-profile {
+    font-size: 22px;
+    color: #262325; 
+}
+
+.profile-details h4.about-me1 {
+    font-size: 22px;
+    color: #1b191a; 
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+/* Button Styling */
+
+.submit-button {
+  background-color: #800000;
+  color: white;
+  border: none;
+  padding: 10px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background-color: #b30000;
+}
+
+.profile-details ul {
+  list-style-type: disc; 
+  margin-left: 20px;
+}
+
+.profile-details ul li {
+  font-size: 16px;
+  color: #555555; 
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+  }
+
+  .change-password a {
+    text-decoration: none;
+    color: #9d0d0f;
+  }
+</style>
+    
+<!-- Main Content -->
+<div class="wrapper">
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+      <div class="profile-card">
+          <img src="{% static 'general_APP/image/profile.png' %}" alt="User Profile Picture" class="profile-img">
+          <h3>{{ userI.username }}</h3> <!-- Display Username -->
+          <p>
+            Student ID: <span class="student-id">{{ userI.student_ID }}</span> <!-- Display Student ID -->
+          </p>
+          <p>
+            Email: <span class="student-id">{{ userI.email }}</span> <!-- Display Email -->
+          </p>
+
+          <div class="profile-stats">
+            <div>
+                <p>0</p>
+                <p>Registered</p>
+            </div>
+
+            <div>
+                <p>0</p>
+                <p>Success</p>
+            </div>
+          </div>
+
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button class="Btn">
+    
+              <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+              
+              <div class="text">Logout</div>
+            </button>
+          </form>
+      </div>
+
+      <div class="profile-info">
+        <div class="profile-tabs">
+          <a href="#" id="aboutTab" class="active">About Me</a>
+          <a href="#" id="coursesTab">History</a>
+          <a href="#" id="editProfileTab">Edit Profile</a>
+      </div>
+      
+      <div class="profile-details" id="aboutMeSection">
+        <h4 class="about-me1">Department & Institution</h4>
+        <p>คณะวิศวกรรมศาสตร์ สาขาสื่อดิจิทัล</p>
+        <h4 class="about-me1">Location</h4>
+        <p>TH</p>
+      </div>
+      
+        <div class="profile-details" id="coursesSection" style="display: none;">
+        <br>
+        <div id="courses" class="course-list">
+          {% for course in userI.Enroll_in_course.all %}
+          {% if not course.Is_open %}
+          <!-- Example Course 1 -->
+          <div class="course-item">  
+            <a href = "{% url 'course' course.id %}"><img src="{{ course.image }}" alt="courses {{ course.id }} image" ></a>
+            <div class="course-info">
+              <h3>{{ course.Title }}</h3>
+              <p>{{ course.Info }}</p>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      
+      <div class="profile-details" id="editProfileSection" style="display: none;">
+            <h4 class="edit-profile">Edit Profile</h4>
+            <form id="editProfileForm" action = {% url 'profile' %} method = 'post'>
+                {% csrf_token %}
+                {{ form.non_field_error }}
+
+                <div class="form-group">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                    {{ form.first_name.errors}}
+                </div>
+
+                <div class="form-group">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                    {{ form.last_name.errors}}
+                </div>
+
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {{ form.username.errors}}
+
+                <div class="form-group">
+                    {{ ex_form.student_ID.label_tag }}
+                    {{ ex_form.student_ID }}
+                    {{ ex_form.student_ID.errors}}
+                </div>
+                
+                <p class="change-password"><a href = {% url "password_change" %}> change password </a></p>
+
+                <button type="submit" class="submit-button">submit</button>
+            </form>
+          </div>
+        </div>
+
+    </div>
+        
+</div>
+
+    <script>
+    // Ensure the DOM is fully loaded before running the script
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the tabs and sections by their IDs
+        const aboutTab = document.getElementById('aboutTab');
+        const coursesTab = document.getElementById('coursesTab');
+        const editProfileTab = document.getElementById('editProfileTab');
+
+        const aboutMeSection = document.getElementById('aboutMeSection');
+        const coursesSection = document.getElementById('coursesSection');
+        const editProfileSection = document.getElementById('editProfileSection');
+
+        // Function to handle the tab switch
+        function showSection(section) {
+            // Hide all sections
+            if (aboutMeSection) aboutMeSection.style.display = 'none';
+            if (coursesSection) coursesSection.style.display = 'none';
+            if (editProfileSection) editProfileSection.style.display = 'none';
+
+            // Show the selected section
+            if (section) section.style.display = 'block';
+
+            // Remove active class from all tabs
+            if (aboutTab) aboutTab.classList.remove('active');
+            if (coursesTab) coursesTab.classList.remove('active');
+            if (editProfileTab) editProfileTab.classList.remove('active');
+        }
+
+        // Event listeners for tabs
+        if (aboutTab && aboutMeSection) {
+            aboutTab.addEventListener('click', function() {
+                showSection(aboutMeSection);
+                aboutTab.classList.add('active');
+            });
+        }
+
+        if (coursesTab && coursesSection) {
+            coursesTab.addEventListener('click', function() {
+                showSection(coursesSection);
+                coursesTab.classList.add('active');
+            });
+        }
+
+        if (editProfileTab && editProfileSection) {
+            editProfileTab.addEventListener('click', function() {
+                showSection(editProfileSection);
+                editProfileTab.classList.add('active');
+            });
+        }
+    });
+    </script>
+{% endblock %}

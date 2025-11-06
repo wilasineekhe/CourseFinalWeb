@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:1113
+From: webmaster@localhost
+To: dragon.mkmk@gmail.com
+Date: Sat, 19 Oct 2024 20:46:42 -0000
+Message-ID: <172937080263.29500.1723364852020708596@Kaminq>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:1113.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:1113/user/reset/Mw/cf6ftu-b2e2f631d9ec6552352c7b017d6216de/
+
+Your username, in case you’ve forgotten: dragon
+
+Thanks for using our site!
+
+The 127.0.0.1:1113 team
+
+
+
+-------------------------------------------------------------------------------

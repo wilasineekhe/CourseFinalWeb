@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate</title>
+    <style type="text/css">
+		 @page {
+				size: A4 landscape;
+			    margin-left: 2.5cm;
+				margin-right: 2.5cm;
+				margin-top: 2cm;
+				margin-bottom: 2cm;
+				background-image: url('https://i.imgur.com/IFIFrM7.png');
+            
+
+				@frame header {
+					-pdf-frame-content: page-header;
+					margin-top: 10.5cm;
+					margin-right: 0mm;
+					margin-bottom: 0cm;
+					margin-left: 0cm;
+				}
+
+				@frame footer {
+					-pdf-frame-content: page-footer;
+					margin-top: 15cm;
+					margin-right: 0mm;
+					margin-bottom: 0cm;
+					margin-left: 0cm;
+				}
+
+
+			}
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .certificate-name {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 64px;
+            font-weight: bold;
+            color: #000;
+        }
+        .certificate-course {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 48px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-header" class="certificate-name">{{ userI.first_name }} {{ userI.last_name }}</div>
+    <div id="page-footer" class="certificate-course">{{ course.Title }} Cousre</div>
+</body>
+</html>

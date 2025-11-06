@@ -1,0 +1,98 @@
+{% extends "general_APP/general_home.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+<style>
+    /* Styling for the login form */
+    .form-heading {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2em;
+        color: #333;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    /* Form heading */
+    h3 {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    /* Form field styling */
+    .form-field {
+        margin-bottom: 15px;
+    }
+
+    .form-field label {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .form-field input,
+    .form-field select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Error message styling */
+    .form-field .errorlist {
+        color: red;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    /* Button styling */
+    button {
+        width: 100%;
+        padding: 10px 20px;
+        background-color: #9d0d0f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #b31d1f;
+    }
+
+    /* Container padding */
+    .form-container {
+        padding-top: 70px;
+        margin-left: -170px;
+    }
+</style>
+    <div class="form-container">
+        <h3 class="form-heading">Login</h3>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><button type="submit">Login</button></p>
+
+            <p>
+                <a href="{% url 'password_reset' %}">Forget password?</a>
+            </p>
+        </form>
+    </div>
+{% endblock %}
+
+

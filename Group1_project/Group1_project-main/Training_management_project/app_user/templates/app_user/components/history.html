@@ -1,0 +1,15 @@
+<h1 class="course-title">History</h1>
+<div id="courses" class="course-list">
+{% for course in userI.Enroll_in_course.all %}
+{% if not course.Is_open %}
+<!-- Example Course 1 -->
+<div class="course-item">  
+  <a href = "{% url 'course' course.id %}"><img src="{{ course.image }}" alt="courses {{ course.id }} image" ></a>
+  <div class="course-info">
+    <h3>{{ course.Title }}</h3>
+    <p>{{ course.Info }}</p>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+</div>

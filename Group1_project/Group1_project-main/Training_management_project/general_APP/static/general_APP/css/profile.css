@@ -1,0 +1,391 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px; 
+  }
+  
+  .ENKKU-brand {
+    background-color: #F5FFFA;
+    border-radius: 8px;
+    padding: 1px;
+  }
+  
+  /* Header */
+  .header {
+    background: linear-gradient(90deg, #b30000, #800000);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1001;
+    height: 60px;
+  }
+
+  /* User Profile */
+.user-profile {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user-profile img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Hamburger Menu */
+  .hamburger {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .hamburger i {
+    color: rgb(255, 255, 255);
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 180px; 
+    background-color: #333333;
+    padding-top: 70px; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+    transform: translateX(0px);
+    overflow-y: auto;
+    box-shadow: 9px 0 5px rgba(206, 133, 133, 0.1); 
+  }
+  
+  .sidebar.hide {
+    transform: translateX(-200px);
+  }
+  
+  /* .sidebar.show {
+    transform: translateX(0%);
+  } */
+  
+  
+  
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 15px; 
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  
+  .sidebar a i {
+    margin-right: 10px;
+    width: 20px; 
+    text-align: center;
+  }
+  
+  .sidebar a:hover {
+    background-color: #800000; 
+  }
+  
+ /* Main Content */
+ .wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    margin-left: 200px;
+  
+  }
+  
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+    width: 200%;
+    gap: 20px; 
+  }
+  
+/* Profile Card */
+.profile-card {
+  background-color: #ffffff; 
+  border-radius: 15px; 
+  text-align: center;
+  padding: 25px; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 30%; 
+  height: 540px;
+  border: 2px solid #e0e0e0; 
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.profile-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.profile-card .profile-img {
+  width: 180px; 
+  height: 180px; 
+  border-radius: 50%; 
+  border: 3px solid #0088ff; 
+  margin-bottom: 20px;
+}
+
+.profile-card h3 {
+  font-size: 24px; 
+  color: #333333; 
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.profile-card p {
+  font-size: 16px;
+  color: #555555; 
+  margin-bottom: 15px; 
+}
+
+  /* Style for the student ID */
+.student-id {
+  font-weight: bold; 
+  color: rgb(54, 53, 53); 
+}
+
+  
+  .profile-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 15px;
+  }
+  
+  .profile-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+  
+  .profile-stats div {
+    width: 50%;
+  }
+
+  .profile-stats div {
+    width: 48%; 
+    background-color: #f8f9fa; 
+    padding: 10px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
+
+
+.profile-stats p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff; 
+    margin: 0;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+
+.profile-stats p:last-child {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.logout-icon a {
+    color: #b30000;
+    font-size: 18px; 
+    text-decoration: none; 
+
+
+  
+}
+
+.logout-icon {
+  margin-top: 24px; 
+  padding-right: 0px;
+  position: fixed;
+
+}
+
+.logout-text {
+  font-weight: bold; 
+  font-size: 290px;
+  padding: 0 20px;
+  position: fixed;
+  color: black;
+  position: fixed;
+}
+
+.logout-icon a:hover {
+    color: #800000;
+}
+
+
+  .profile-info {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    width: 70%; 
+    height: auto; 
+    border: 2px solid #dedede; 
+}
+  
+  .profile-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    position: sticky;
+    background-color: #fff;
+    z-index: 1;
+  }
+  
+  
+  .profile-tabs a {
+    padding: 10px 20px;
+    color: #007bff; 
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s; 
+}
+
+.profile-tabs a.active {
+    color: #0056b3; 
+    border-bottom: 2px solid #007bff;
+}
+
+.profile-tabs a:hover {
+  color: #0056b3; 
+}
+  
+  .profile-details {
+    margin-top: 20px;
+    min-height: 100%; 
+  }
+  
+  
+.profile-details p {
+  font-size: 16px;
+  color: #444444; 
+  line-height: 1.6; 
+  padding-bottom: 35px;
+}
+
+.profile-details h4 {
+  font-size: 22px; 
+  color: #333333; 
+  margin-bottom: 15px;
+  border-left: 4px solid #007bff; 
+  padding-left: 10px; 
+}
+
+.profile-details h4.registered-course,
+.profile-details h4.Achievement {
+    font-size: 22px; 
+    color: #222523; 
+    font-weight: bold;
+}
+
+.profile-details h4.edit-profile {
+    font-size: 22px;
+    color: #262325; 
+}
+
+.profile-details h4.about-me1 {
+    font-size: 22px;
+    color: #1b191a; 
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+/* Button Styling */
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3; 
+}
+
+.submit-button {
+  background-color: #b30000;
+  color: white;
+  border: none;
+  padding: 10px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background-color: #800000;
+}
+
+.profile-details ul {
+  list-style-type: disc; 
+  margin-left: 20px;
+}
+
+.profile-details ul li {
+  font-size: 16px;
+  color: #555555; 
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+  }
+  
+
+
+  .site-footer {
+    background: linear-gradient(90deg, #b30000, #800000);
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 50px; 
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+  }

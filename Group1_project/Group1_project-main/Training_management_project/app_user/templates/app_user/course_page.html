@@ -1,0 +1,247 @@
+{% extends "general_APP/general_home.html" %}
+
+{% block title %}
+    course page
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+  /* Course Details Section */
+.course-details {
+    max-width: 900px;
+    margin: 120px auto 40px;
+    padding: 20px;
+    background-color: #eaeaea;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background-color: #dbdada;
+    border-radius: 12px;
+    width: 100%; 
+    padding: 30px; 
+    box-sizing: border-box; 
+    
+}
+
+
+.course-title-status {
+    max-width: 70%;
+    margin-right: 20px;
+    padding: 30px 0;
+}
+
+
+.course-header h1 {
+    color: #3c3c3c;
+    margin-bottom: 8px;
+}
+
+.course-header p {
+    font-size: 16px;
+    color: #2b0c0c;
+    margin: 6px 0;
+}
+
+.course-image-container {
+    text-align: center;
+}
+
+
+.course-image-container .slots {
+    font-size: 17px;
+    color: #b30000;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.course-image {
+    max-width: 350px;
+    border-radius: 10px;
+    margin: 20px 0;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.course-title-status .status1 {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.course-title-status .Status2 {
+    color: red;
+    font-weight: bold;
+}
+
+
+
+.enroll-button {
+    background-color: #800000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 30px;
+    margin: 10px 0;
+    margin-top: 5px;
+    cursor: default;
+    border-radius: 8px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.course-info {
+    margin-top: 20px;
+    background-color: rgb(203, 198, 198);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.course-info h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.course-info p {
+    font-size: 16px;
+    color: #5c3535;
+    margin-bottom: 10px;
+}
+
+.course-info h4 {
+    font-size: 19px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.user_info {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.user_info p1 {
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.user_info .fullname{
+    font-size: 16px;
+    color: #b10098;
+
+    font-weight: bold;
+    
+}
+
+.user_info .Role{
+    font-size: 16px;
+    color: #463644;
+    font-weight: bold;
+    
+}
+
+.user_info .user_criteria {
+    color: rgb(51, 150, 66);
+}
+
+.user_info .File {
+    font-size: 16px;
+    margin-right: 30px;
+    padding: 20px 0;
+
+}
+
+/* Download Certificates: File */
+
+.course-info a {
+    font-size: 16px;
+    margin-right: 30px;
+    padding: 20px 0;
+    text-decoration: none;
+    margin-left: 380px;
+}
+
+.enroll-button a {
+  text-decoration: none;
+  color: white;
+}
+
+</style>
+
+    <!-- Main Course Deatil -->
+  <div class="course-details">
+    <div class="course-header">
+      <div class="course-title-status">
+        <h1>{{only_course.Title}}</h1>
+        <div class="course-image-container">
+          <img class="course-image" src="{{ only_course.image }}" alt="Course Image">
+        </div>
+        <br>
+        <p>Lecturer : {% if only_course.lecturer == None %} None {% else %} {{ only_course.lecturer }}{% endif %} <br> Course ID : {% if only_course.code == None %} None {% else %} {{ only_course.code }}{% endif %}</p>
+        <p class="status1">Status: <span class="Status2">{% if only_course.Is_open == True %} Open {% else %} Close {% endif %}</span></p> 
+      </div>
+        {% comment %} <p class="slots">40/40</p> {% endcomment %}
+      
+    </div>
+    
+    <!-- enrolled button -->
+    <form action = '{% url "enroll_button" only_course.id %}' method = "post">
+      {% csrf_token %}
+
+      {% if  only_course.Is_full %}
+
+      {% comment %} 
+      <button type = 'submit' name = 'course_id' value= "{{ only_course.course_id }}" class="btn active" >Unavailable</button> 
+      ฝากทำ  unactive button หน่อยนะ >~<
+      {% endcomment %}
+      <p> this course is full</p>
+
+      {% elif enroll_status %}
+      <button type = 'submit' name = 'course_id' value= "{{ only_course.course_id }}" class="enroll-button">Unenrolled</button>
+      {% else %}
+      <button type = 'submit' name = 'course_id' value= "{{ only_course.course_id }}" class="enroll-button">Enroll</button>
+      {% endif %}
+    </form>
+
+
+    <!-- Course Deatil -->
+
+    <div class="course-info">
+      <h3>Course Information</h3>
+      <p>
+        {{ only_course.Info }}
+      </p>
+      <br>
+    </div>
+    {% if enroll_status %}
+    <div>
+      <br>
+      <h1>Learner Information</h1>
+      <p>Name : {{ userI.first_name }} {{ userI.last_name }}</p>
+      <p>Student ID : {{userI.student_ID}} </p>
+      {% if only_course.Is_open %}
+        <p>Course Status : Ongoing</p>
+      {% else %}
+        {% if enroll.Is_pass %}
+          <p>Status : Pass </p>
+          <button class="enroll-button"><a href = '{% url "pdf_button" only_course.id %}'> Download Certificate </a></button>
+        {% else %}
+          <p>Status : Failed</p>  
+        {% endif %}
+
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+{% endblock %}
