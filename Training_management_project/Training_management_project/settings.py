@@ -13,19 +13,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 # ใช้ env บน Render: DEBUG=false, SECRET_KEY=xxx
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"   # local = True, Render = False
 
-SECRET_KEY = os.getenv(
-    "SECRET_KEY",
-    "django-insecure-p%3fz@s957g%0&)cs4nfwekbr4-(aq3alqpdn3)&oy!zt3zvxm",  # อย่าลืมตั้งใน Render
-)
+ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "kaminqq.pythonanywhere.com",
-    # 👉 เปลี่ยนด้านล่างเป็นโดเมนจริงของ Render คุณ
-    "your-service.onrender.com",
-    "your-custom-domain.com",
-]
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # ถ้าใช้ https บน Render ต้อง trust โดเมนนี้สำหรับ CSRF
 CSRF_TRUSTED_ORIGINS = [
