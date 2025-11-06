@@ -27,10 +27,7 @@ CSRF_TRUSTED_ORIGINS = [
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # ถ้าใช้ https บน Render ต้อง trust โดเมนนี้สำหรับ CSRF
-CSRF_TRUSTED_ORIGINS = [
-    "https://your-service.onrender.com",
-    "https://your-custom-domain.com",
-]
+
 
 # ── Installed apps (คงเดิม) ──────────────────────────────────────
 INSTALLED_APPS = [
