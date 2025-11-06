@@ -1,0 +1,1 @@
+gunicorn Training_management_project.wsgi --log-file -
