@@ -13,7 +13,16 @@ MEDIA_ROOT = BASE_DIR / "media"
 # ใช้ env บน Render: DEBUG=false, SECRET_KEY=xxx
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"   # local = True, Render = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "coursefinalweb.onrender.com",
+    "127.0.0.1",
+    "localhost",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://coursefinalweb.onrender.com",
+]
+
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
